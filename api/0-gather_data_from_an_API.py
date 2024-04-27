@@ -30,7 +30,7 @@ def get_employee_todo_progress(employee_id):
 
     print("Employee {} is done with tasks({}/20):\n{}".format(name['name'],
                                                               count, title),
-            end='')
+        end='')
 
 
 if __name__ == "__main__":
