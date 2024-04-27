@@ -28,9 +28,8 @@ def get_employee_todo_progress(employee_id):
             title += "\t{}\n".format(item['title'])
             count += 1
 
-    print("Employee {} is done with tasks({}/20):\n{}".format(name['name'],
-                                                              count, title),
-        end='')
+    print("Employee {} is done with tasks({}/20):\n{}".format(
+        name['name'], count, title), end='')
 
 
 if __name__ == "__main__":
