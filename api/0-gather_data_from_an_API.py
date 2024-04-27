@@ -24,7 +24,7 @@ def get_employee_todo_progress(employee_id):
     title = ""
 
     for item in todos:
-        if item['completed'] is True:
+        if item['completed'] == True:
             title += "\t{}\n".format(item['title'])
             count += 1
 
