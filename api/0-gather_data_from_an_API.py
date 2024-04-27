@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Returns to-do list information for a given employee ID."""
 import requests
-import sys
+from sys import argv
 
 url_base = 'https://jsonplaceholder.typicode.com/users/'
 
@@ -18,8 +18,8 @@ def get_employee_todo_progress(employee_id):
     Returns:
         None
     """
-    name = requests.get(url_base + str(employee_id)).json()
-    todos = requests.get(url_base + str(employee_id) + '/todos/').json()
+    name = requests.get(url_base + argv[1]).json()
+    todos = requests.get(url_base + argv[1] + '/todos/').json()
     count = 0
     title = ""
 
@@ -33,8 +33,4 @@ def get_employee_todo_progress(employee_id):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py EMPLOYEE_ID")
-        sys.exit(1)
-
-    get_employee_todo_progress(int(sys.argv[1]))
+    get_employee_todo_progress()
