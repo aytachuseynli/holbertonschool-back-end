@@ -3,9 +3,7 @@
 import requests
 import sys
 
-
-import requests
-import sys
+url_base = 'https://jsonplaceholder.typicode.com/users/'
 
 
 def get_employee_todo_progress(employee_id):
@@ -20,15 +18,19 @@ def get_employee_todo_progress(employee_id):
     Returns:
         None
     """
-    url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-    todos = requests.get(url).json()
-    completed_tasks = [todo['title'] for todo in todos if todo['completed']]
-    print(
-        f"Employee {todos[0]['name']} is done with tasks "
-        f"({len(completed_tasks)}/{len(todos)}):"
-    )
-    for task in completed_tasks:
-        print(f"\t{task}")
+    name = requests.get(url_base + str(employee_id)).json()
+    todos = requests.get(url_base + str(employee_id) + '/todos/').json()
+    count = 0
+    title = ""
+
+    for item in todos:
+        if item['completed'] is True:
+            title += "\t{}\n".format(item['title'])
+            count += 1
+
+    print("Employee {} is done with tasks ({}/20):\n{}".format(name['name'],
+                                                                count, title),
+          end='')
 
 
 if __name__ == "__main__":
