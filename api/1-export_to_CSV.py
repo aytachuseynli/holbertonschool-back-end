@@ -14,7 +14,8 @@ url_base = 'https://jsonplaceholder.typicode.com/users/'
 
 def export_csv():
     """
-    Fetches the tasks owned by a given employee ID and exports them to a CSV file.
+    Fetches the tasks owned by a given employee ID and
+    exports them to a CSV file.
     Each record in the CSV file contains the following fields:
     - USER_ID
     - USERNAME
